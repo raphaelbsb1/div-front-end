@@ -1,0 +1,480 @@
+<div data-ng-controller="PartidoCtrl" data-ng-init="init()">
+
+	<section class="dvg-margin-tb-20">
+		<div class="row dvg-jumbo-green dvg-margin-top-20">
+
+	        <div class="col-md-2 text-center" style="line-height: 80px;">
+	          <img class="img-thumbnail img-responsive" src="images/pmdb.jpg" alt="{{resultData.nome}}" style="margin: 20px;" />
+	        </div>
+		        
+	        <div class="col-md-10 text-left">
+	        	<div style="margin: 20px;">
+		        	<h1 class="dvg-jumbo-title-partido">Partido do Movimento Democrático Brasileiro - PMDB<span class="dvg-jumbo-number-partido pull-right">15</span></h1>
+		        	<table class="dvg-table-info">
+		        		<tr>
+		        			<td>CNPJ {{resultData.cnpj | cnpj}}</td>
+		        		</tr>
+		        		<tr>
+		        			<td>Diretório Nacional - UF / Município</td>
+		        		</tr>
+		        	</table>
+		        </div>
+		        <span class="pull-right">Última Atualização: 25/12/2015</span>
+	        </div>
+
+		</div>
+	</section>
+
+	<section>
+		<div class="row dvg-breadcrumb">
+			<div class="col-md-12">
+				<ol class="breadcrumb">
+					<li><a href class="dvg-breadcrumb-link" data-ng-click="irParaPaginaInicial()">Página Inicial</a></li>
+					<li class="active">PMDB</li>
+				</ol>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="page-header">
+					<h3>Consultas</h3>
+				</div>
+
+				<div>
+					<a href class="btn btn-primary btn-block"><i class="fa fa-search"></i> Receitas CPF/CNPJ</a>
+					<a href class="btn btn-primary btn-block"><i class="fa fa-search"></i> Despesas CPF/CNPJ</a>
+					<a href class="btn btn-primary btn-block"><i class="fa fa-file-text-o"></i> Extratos Bancários</a>
+					<a href class="btn btn-primary btn-medium btn-block"><i class="fa fa-file-text"></i> NFEs</a>
+					<a href class="btn btn-primary btn-block"><i class="fa fa-table"></i> Integra da Prestação de Contas</a>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="page-header">
+					<h3>Estatísticas</h3>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="dvg-painel-verde">
+							<h2>R$ 260.000.000,00</h2>
+							<span>Total de Recursos Recebidos</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="dvg-painel-verde">
+							<h3>R$ 160.000.000,00</h3>
+							<span>Total Financeiro</span>
+							<span>representa 61%</span>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="dvg-painel-verde">
+							<h3>R$ 100.000.000,00</h3>
+							<span>Total Estimado</span>
+							<span>representa 39%</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="dvg-painel-laranja">
+							<h3>R$ 100.000.000,00</h3>
+							<span>Doação por Pessoas Físicas</span>
+							<span>representa 35%</span>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="dvg-painel-laranja">
+							<h3>R$ 100.000.000,00</h3>
+							<span>Doação por Pessoas Jurídicas</span>
+							<span>representa 35%</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="dvg-painel-laranja">
+							<h3>R$ 100.000.000,00</h3>
+							<span>Doação por Partidos</span>
+							<span>representa 35%</span>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="dvg-painel-laranja">
+							<h3>R$ 100.000.000,00</h3>
+							<span>Doação pela Internet</span>
+							<span>representa 35%</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="dvg-painel-laranja">
+							<h3>R$ 100.000.000,00</h3>
+							<span>Doação de RONIs</span>
+							<span>representa 35%</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-md-4">
+				<div class="page-header">
+					<h3>Quantitativos</h3>
+				</div>
+
+				<!-- <div class="row">
+					<div class="col-md-12">
+						<h4 class="dvg-margin-top-0">Gastos de Campanha</h4>
+
+						<table width="100%" class="dvg-margin-top-20">
+							<tr>
+								<td class="text-center">
+									<canvas id="canvas-grafico-1" class="dvg-canvas" width="100" height="100"/>
+									<div>
+										Esperado
+										<br/>
+										349 prestações
+									</div>
+								</td>
+								<td class="text-center">
+									<canvas id="canvas-grafico-2" class="dvg-canvas" width="100" height="100"/>
+									<div>
+										Entregue
+										<br/>
+										299 prestações
+									</div>
+								</td>
+								<td class="text-center">
+									<canvas id="canvas-grafico-3" class="dvg-canvas" width="100" height="100"/>
+									<div>
+										Pendente
+										<br/>
+										55 prestações
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div> -->
+
+				<div class="row">
+					<div class="col-md-12">
+						<h4 class="dvg-margin-top-0">Gastos de Campanha</h4>
+						
+						<table width="100%" class="dvg-margin-top-20">
+							<tr>
+								<td class="text-center">
+									<canvas id="canvas-graph-1" class="dvg-canvas" width="100" height="100"/>
+									<div>
+										Contratado
+										<br/>
+										RS 100.000.000,00
+									</div>
+								</td>
+								<td class="text-center">
+									<canvas id="canvas-graph-2" class="dvg-canvas" width="100" height="100"/>
+									<div>
+										Pago com FP
+										<br/>
+										RS 70.000.000,00
+									</div>
+								</td>
+								<td class="text-center">
+									<canvas id="canvas-graph-3" class="dvg-canvas" width="100" height="100"/>
+									<div>
+										Pago com OR
+										<br/>
+										RS 30.000.000,00
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+				<div class="row dvg-margin-top-20">
+					<div class="col-md-12">
+						<h4>Recursos Financeiros Declarados/Transitaram por Conta</h4>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="dvg-painel-azul">
+									<h3>R$ 150.000.000,00</h3>
+									<span>Extratos Bancários</span>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="dvg-painel-azul">
+									<h3>R$ 290.000.000,00</h3>
+									<span>Prestação de Contas</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<h4>Saldo de Campanha</h4>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="dvg-painel-vermelho dvg-painel-major dvg-margin-bottom-10">
+									<h3>R$ 59.000,00</h3>
+									<span>Dívidas</span>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="dvg-painel-cinza dvg-painel-cinza-double dvg-margin-bottom-10">
+									<h3>R$ 0,00</h3>
+									<span class="dvg-margin-bottom-9">Financeiro</span>
+									<h3>R$ 0,00</h3>
+									<span>Estimado</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<section class="dvg-margin-bottom-30">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="page-header">
+					<h3>Concentração de Gastos <span class="badge">17</span> <a href title="Listagem Completa" class="pull-right"><i class="fa fa-list"></i></a></h3>
+				</div>
+
+				<div>
+					<h4>Eventos <small class="pull-right">60%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+							<span class="sr-only">60% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>Quantidade: 48</small>
+						<small class="pull-right">R$ 83.000.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Material de Campanha <small class="pull-right">27%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 27%">
+							<span class="sr-only">27% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>Quantidade: 262</small>
+						<small class="pull-right">R$ 19.000.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Colaboradores <small class="pull-right">11%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 11%">
+							<span class="sr-only">11% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>Quantidade: 12</small>
+						<small class="pull-right">R$ 8.000.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Viagens <small class="pull-right">8%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 8%">
+							<span class="sr-only">8% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>Quantidade: 123</small>
+						<small class="pull-right">R$ 12.000.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Brindes <small class="pull-right">3%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 3%">
+							<span class="sr-only">3% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>Quantidade: 4856</small>
+						<small class="pull-right">R$ 4.000.000,00</small>
+					</div>
+		 		</div>
+
+			</div>
+
+			<div class="col-md-4">
+				<div class="page-header">
+					<h3>Ranking de Doadores <span class="badge">221</span> <a href title="Listagem Completa" class="pull-right"><i class="fa fa-list"></i></a></h3>
+				</div>
+
+				<div>
+					<h4>Paulo Aurelio Lemos <small class="pull-right">53%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 53%">
+							<span class="sr-only">53% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>CPF 001.002.003-04</small>
+						<small class="pull-right">R$ 1.200.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Maria Cecilia Santana <small class="pull-right">23%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 23%">
+							<span class="sr-only">23% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>CPF 001.002.003-04</small>
+						<small class="pull-right">R$ 690.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Carlos Eduardo Sobral <small class="pull-right">9%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 9%">
+							<span class="sr-only">9% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>CPF 001.002.003-04</small>
+						<small class="pull-right">R$ 530.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Wander Gomes Oliveira <small class="pull-right">7%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 8%">
+							<span class="sr-only">8% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>CPF 001.002.003-04</small>
+						<small class="pull-right">R$ 510.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Leonardo Aparicio Mendes <small class="pull-right">5%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%">
+							<span class="sr-only">5% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>CPF 001.002.003-04</small>
+						<small class="pull-right">R$ 370.000,00</small>
+					</div>
+		 		</div>
+
+			</div>
+
+			<div class="col-md-4">
+				<div class="page-header">
+					<h3>Ranking de Fornecedores <span class="badge">37</span> <a href title="Listagem Completa" class="pull-right"><i class="fa fa-list"></i></a></h3>
+				</div>
+
+				<div>
+					<h4>Cyrela Brazil Realty <small class="pull-right">60%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+							<span class="sr-only">60% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>CNPJ 01.002.003/0001-04</small>
+						<small class="pull-right">R$ 1.200.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Gol Transportes Aéreos <small class="pull-right">27%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 27%">
+							<span class="sr-only">27% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>CNPJ 01.002.003/0001-04</small>
+						<small class="pull-right">R$ 1.200.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Lojas Americanas <small class="pull-right">11%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 11%">
+							<span class="sr-only">11% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>CNPJ 01.002.003/0001-04</small>
+						<small class="pull-right">R$ 1.200.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>MRV Engenharia <small class="pull-right">8%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 8%">
+							<span class="sr-only">8% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>CNPJ 01.002.003/0001-04</small>
+						<small class="pull-right">R$ 1.200.000,00</small>
+					</div>
+		 		</div>
+
+		 		<div>
+					<h4>Andrade Gutierrez <small class="pull-right">3%</small></h4>
+					<div class="progress dvg-margin-bottom-2">
+						<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 3%">
+							<span class="sr-only">3% Complete (warning)</span>
+						</div>
+					</div>
+					<div class="text-left">
+						<small>CNPJ 01.002.003/0001-04</small>
+						<small class="pull-right">R$ 1.200.000,00</small>
+					</div>
+		 		</div>
+			</div>
+		</div>
+	</section>
+</div>

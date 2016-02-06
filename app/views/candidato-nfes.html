@@ -1,0 +1,148 @@
+<div data-ng-controller="CandidatoNfesCtrl" data-ng-init="init()">
+
+	<section class="dvg-margin-tb-20">
+		<div class="row dvg-jumbo-green dvg-margin-top-20">
+
+	        <div class="col-md-2 text-center" style="line-height: 80px;">
+	          <img class="img-thumbnail img-responsive" src="{{resultData.foto}}" alt="{{resultData.nome}}" style="margin: 20px;" />
+	        </div>
+		        
+	        <div class="col-md-10 text-left">
+	        	<div style="margin: 20px;">
+		        	<h1 class="dvg-jumbo-title">{{resultData.nomeUrna}} <span class="dvg-jumbo-number pull-right">{{resultData.numero}}</span></h1>
+		        	<table class="dvg-table-info">
+		        		<tr>
+		        			<td>CNPJ {{resultData.cnpj | cnpj}}</td>
+		        		</tr>
+		        		<tr>
+		        			<td>{{resultData.partido}} - PSDB</td>
+		        		</tr>
+		        		<tr>
+		        			<td>Candidatura {{resultData.candidatura}}</td>
+		        		</tr>
+		        		<tr>
+		        			<td><span class="badge dvg-jumbo-eleito">Eleito</span></td>
+		        		</tr>
+		        		<tr>
+		        			<td>
+		        				<span class="badge dvg-jumbo-nao-eleito">Não Eleito</span>
+		        			</td>
+		        		</tr>
+		        	</table>
+		        </div>
+		        <span class="pull-right">Última Atualização: 25/12/2015</span>
+	        </div>
+
+		</div>
+	</section>
+
+	<section>
+		<div class="row dvg-breadcrumb">
+			<div class="col-md-12">
+				<ol class="breadcrumb">
+					<li><a href data-ng-click="irParaPaginaInicial()" class="dvg-breadcrumb-link">Página Inicial</a></li>
+					<li><a href data-ng-click="irParaCandidato('id')" class="dvg-breadcrumb-link">AÉCIO NEVES</a></li>
+					<li class="active">NFEs</li>
+				</ol>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="row dvg-margin-bottom-20">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h3>NFEs <a href class="pull-right" title="Exportar"><i class="fa fa-download"></i></a></h3>
+				</div>
+
+				<div class="table-responsive">
+					<table st-table="resultData.integra" class="table table-hover dvg-table">
+						<thead>
+						<tr>
+							<th st-sort="doador">CNPJ Emitente</th>
+							<th st-sort="originario">Natureza Op.</th>
+							<th st-sort="rebico">Modelo</th>
+							<th st-sort="nDocumento">Data Emissão</th>
+							<th st-sort="valor">Nº NF</th>
+							<th st-sort="valor">Nº Série</th>
+							<th st-sort="valor">Valor</th>
+							<th st-sort="valor">UE</th>
+							<th st-sort="valor">Unidade Arrecadadora</th>
+							<th st-sort="valor">Ue</th>
+							<th st-sort="valor">Chave</th>
+							<th st-sort="valor">Link</th>
+						</tr>
+						<tr>
+							<th colspan="12">
+								<input st-search placeholder="Pesquisa" class="input-sm form-control" type="search"/>
+							</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="row in resultData.extratos">
+								<td>
+									<span class="">{{row.cnpjEmitente}}</span>
+								</td>
+								<td>
+									<span class="">{{row.naturezaOperacao}}</span>
+								</td>
+								<td>
+									<span class="">{{row.modelo}}</span>
+								</td>
+								<td>
+									<span class="">{{row.dataEmissao}}</span>
+								</td>
+								<td>
+									<span class="">{{row.numeroNF}}</span>
+								</td>
+								<td>
+									<span class="">{{row.numeroSerie}}</span>
+								</td>
+								<td>
+									<span class="">{{row.valor}}</span>
+								</td>
+								<td>
+									<span class="">{{row.UE}}</span>
+								</td>
+								<td>
+									<span class="">{{row.unidadeArrecadadora}}</span>
+								</td>
+								<td>
+									<span class="">{{row.eu}}</span>
+								</td>
+								<td>
+									<span class="">{{row.chave}}</span>
+								</td>
+								<td>
+									<span class="">
+										<a href="{{row.link}}" data-ng-if="row.link" class="dvg-painel-icon"><i class="fa fa-external-link-square"></i></a>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="12" class="text-center">
+									<div class="pull-left">
+										Total de 10 registros.
+									</div>
+									<div class="btn-group pull-right" role="group" aria-label="Paginação">
+										<button type="button" class="btn btn-default">#</button>
+										<button type="button" class="btn btn-default">1</button>
+										<button type="button" class="btn btn-default">2</button>
+										<button type="button" class="btn btn-default">3</button>
+										<button type="button" class="btn btn-default">4</button>
+										<button type="button" class="btn btn-default">5</button>
+										<button type="button" class="btn btn-default">#</button>
+									</div>
+									<!-- <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div> -->
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</section>
+</div>

@@ -1,0 +1,72 @@
+<div data-ng-controller="ResultadoBuscaCtrl" data-ng-init="init()">
+	<div class="page-header">
+	  <h3 class="dvg-margin-bottom-0">Resultado da Pesquisa</h3>
+	</div>
+
+	<section class="dvg-margin-bottom-30">
+	  <div class="row">
+	    <div class="col-md-8 text-center">
+	      <form>
+	        <table width="100%">
+	          <tr>
+	            <td width="85%" class="text-left">
+	            	<label>Resultados encontrados para</label>
+	            	<input type="text" class="form-control dvg-full-width" id="searchText" data-ng-model="formData.searchText">
+	            </td>
+	            <td valign="bottom">
+	              <a href="#/resultado-pesquisa" class="btn btn-primary">Pesquisar</a>
+	            </td>
+	          </tr>
+	        </table>
+	      </form>
+	    </div>
+	  </div>
+	</section>
+
+	<section>
+		<div class="row">
+			<div class="col-md-3 dvg-panel-search">
+				<ul class="list-group">
+					<li class="list-group-item" data-ng-repeat="item in resultData">
+						<span class="badge">{{item.resultado.length}}</span>
+						<a href data-ng-click="setVisible(item.resultado)">{{item.nome}}</a>
+					</li>
+				</ul>
+				<div class="row">
+					<div class="col-md-12">
+						<small class="dvg-panel-search-count">42 resultados encontrados</small>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-9">
+				<div class="list-group">
+					<a href class="list-group-item" data-ng-repeat="resultado in resultVisible" data-ng-click="setLocation(resultado)">
+						<div class="media" data-ng-show="resultado.type === 'candidato'">
+							<div class="media-left">
+								<img class="media-object img-thumbnail" src="{{resultado.foto}}" alt="{{resultado.nome}}" width="48px">
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading dvg-list-name">{{resultado.nome}}</h4>
+							</div>
+							<div class="media-right">
+								<span class="dvg-list-sigla">{{resultado.siglaPartido}}</span>
+							</div>
+						</div>
+
+						<div class="media" data-ng-show="resultado.type === 'partido'">
+							
+							<div class="media-body">
+								<h4 class="media-heading dvg-list-name">{{resultado.nome}} <small>{{resultado.numero}}</small></h4>
+							</div>
+							<div class="media-right">
+								<span class="dvg-list-sigla">{{resultado.sigla}}</span>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</div>
