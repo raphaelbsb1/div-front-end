@@ -2,25 +2,23 @@
 
 /**
  * @ngdoc function
- * @name divulgaApp.controller:MainCtrl
+ * @name divulgaApp.controller:ModalMunicipioCtrl
  * @description
- * # MainCtrl
+ * # ModalMunicipioCtrl
  * Controller of the divulgaApp
  */
 
 var modalControllers = angular.module('modalControllers', []);
 
-modalControllers.controller('ModalMunicipioCtrl', ['$scope', '$uibModalInstance', 'municipios', 'uf',
-  	 function($scope, $uibModalInstance, municipios, uf) {
+modalControllers.controller('ModalMunicipioCtrl', ['$scope', '$uibModalInstance', 
+  'municipios', 'uf', function($scope, $uibModalInstance, municipios, uf) {
 
   $scope.municipios = municipios;
   $scope.uf = uf;
-  $scope.selected = {
-    item: $scope.municipios[0]
-  };
 
-  $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
+  $scope.selecaoMunicipio = function (itemSelecionado) {
+    $scope.municipio = itemSelecionado;
+    $uibModalInstance.close($scope.municipio);
   };
 
   $scope.cancel = function () {

@@ -7,6 +7,9 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+
+
 module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
@@ -16,13 +19,14 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn'
+    cdnify: 'grunt-google-cdn',
+    configureProxies: 'grunt-connect-proxy'
   });
 
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: '../spce-divulgacao-web/src/main/webapp'
+    dist: '../div-front-end/src/main/webapp'
   };
 
   // Define the configuration for all the tasks
@@ -75,11 +79,19 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
+      proxies: [
+          {
+              context: '/cortex',
+              host: 'localhost',
+              port: 8080
+          }
+      ],      
       livereload: {
         options: {
           open: true,
           middleware: function (connect) {
             return [
+              proxySnippet,
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -127,6 +139,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
+          'lib/*.js',
           '<%= yeoman.app %>/scripts/{,*/}*.js'
         ]
       },
@@ -450,6 +463,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
+      'configureProxies',
       'postcss:server',
       'connect:livereload',
       'watch'

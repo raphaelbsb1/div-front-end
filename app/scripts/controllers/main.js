@@ -26,12 +26,9 @@ mainControllers.controller('MainCtrl', ['$scope', '$location',  '$log',
 
 
 
-  $scope.animationsEnabled = true;
-
   $scope.open = function (uf) {
     var modalInstance = $uibModal.open({
-      animation: $scope.animationsEnabled,
-      templateUrl: 'modalMunicipios.html',
+      templateUrl: 'modalMunicipios',
       controller: 'ModalMunicipioCtrl',
       resolve: {
         municipios: function () {
@@ -43,10 +40,9 @@ mainControllers.controller('MainCtrl', ['$scope', '$location',  '$log',
       }
     });
 
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
+
+    modalInstance.result.then(function (itemSelecionado) {
+      $scope.municipio = itemSelecionado;
     });
   };
 	

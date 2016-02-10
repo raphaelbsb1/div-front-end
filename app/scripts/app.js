@@ -29,8 +29,8 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/estados', {
-        templateUrl: 'views/estados.html',
+      .when('/candidatos', {
+        templateUrl: 'views/candidatos.html',
         controller: 'EstadosCtrl',
         controllerAs: 'estados'
       })

@@ -120,7 +120,8 @@
 
 </div>
 
-    <script type="text/ng-template" id="modalMunicipios.html">
+    <!--Incício Modal selecao municipios -->
+    <script type="text/ng-template" id="modalMunicipios">
         <div class="modal-header">
             <h3 class="modal-title">Estado Selecionado:{{uf}}</h3>
         </div>
@@ -133,7 +134,8 @@
               <input type="text" class="form-control" id="input_municipio" placeholder="Município" data-ng-model="searchText">
           </div>
               <div class="list-group">
-                <a href="#" class="list-group-item" data-ng-repeat="municipio in municipios | filter: searchText">
+                <a href="#" class="list-group-item" data-ng-repeat="municipio in municipios | filter: searchText"
+                  ng-click="selecaoMunicipio(municipio)">
                   {{municipio.nome}}
                 </a>
               </div>
@@ -141,3 +143,4 @@
           </div>
         </div>
     </script>
+    <!--Fim Modal selecao municipios -->
